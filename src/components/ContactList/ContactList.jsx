@@ -5,12 +5,18 @@ import { ContactListStyled } from './ContactList.styled';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 import { ColorRing } from 'react-loader-spinner';
+import {
+  selectContacts,
+  selectError,
+  selectFilter,
+  selectIsLoading,
+} from 'redux/selectors';
 
 export function ContactList() {
-  const contacts = useSelector(state => state.contacts);
-  const filter = useSelector(state => state.filter);
-  const isLoading = useSelector(state => state.contacts.isLoading);
-  const error = useSelector(state => state.contacts.error);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   const dispatch = useDispatch();
   useEffect(() => {
