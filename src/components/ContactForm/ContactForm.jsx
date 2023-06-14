@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import shortid from 'shortid';
 import {
   ContactFormStyled,
   ContactLabel,
@@ -7,7 +6,7 @@ import {
   ContactBtn,
 } from './ContactForm.styled';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 
 export function ContactForm() {
   const [name, setName] = useState('');
@@ -26,11 +25,9 @@ export function ContactForm() {
   };
   const onSubmit = e => {
     e.preventDefault();
-    const id = shortid.generate();
     const newContact = {
-      id: id,
       name: name,
-      number: number,
+      phone: number,
     };
     dispatch(addContact(newContact));
     resetForm();
